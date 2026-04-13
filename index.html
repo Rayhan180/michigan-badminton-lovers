@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Michigan Badminton Lovers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Official site for Michigan Badminton Lovers – community, matches, and live sports content." />
+    <style>
+        :root {
+            --primary: #0b7285;
+            --primary-dark: #074552;
+            --accent: #ffd43b;
+            --bg: #f5f7fb;
+            --text: #12212b;
+            --light: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: var(--light);
+        }
+
+        .nav {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #e3fafc, #0b7285);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a {
+            padding: 0.25rem 0.5rem;
+            border-radius: 999px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .hero {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem 3rem;
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.1rem, 3vw + 1rem, 3rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent);
+        }
+
+        .hero-tagline {
+            font-size: 1.05rem;
+            max-width: 32rem;
+            opacity: 0.92;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+            background: transparent;
+            color: inherit;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #343a40;
+            border-color: #f59f00;
+        }
+
+        .btn-primary:hover {
+            background: #fcc419;
+        }
+
+        .btn-outline {
+            border-color: rgba(255, 255, 255, 0.7);
+            color: #e9f5ff;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-meta {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 1.25rem;
+            padding: 1.25rem 1.25rem 1.5rem;
+            box-shadow: 0 18px 45px rgba(3, 37, 60, 0.35);
+        }
+
+        .hero-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 0.15rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(11, 114, 133, 0.08);
+            color: var(--primary-dark);
+        }
+
+        .hero-card h2 {
+            font-size: 1.15rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-meta-small {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .hero-meta-item {
+            background: var(--bg);
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.6rem;
+            text-align: left;
+        }
+
+        .hero-meta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            opacity: 0.7;
+        }
+
+        .hero-meta-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        main {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem 3.5rem;
+        }
+
+        section {
+            margin-bottom: 2.75rem;
+        }
+
+        section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.4rem;
+        }
+
+        .section-header p {
+            font-size: 0.95rem;
+            max-width: 30rem;
+            opacity: 0.9;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(18, 33, 43, 0.12);
+            background: #ffffff;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 0.9rem;
+            padding: 1rem;
+            box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+            font-size: 0.92rem;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--primary-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .schedule-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .schedule-item {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr) auto;
+            gap: 0.75rem;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 0.8rem;
+            padding: 0.7rem 0.9rem;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+            font-size: 0.9rem;
+        }
+
+        .schedule-date {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .schedule-venue {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .schedule-tag {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 999px;
+            background: rgba(11, 114, 133, 0.07);
+            color: var(--primary-dark);
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .media-thumb {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.8rem;
+            background: radial-gradient(circle at 30% 20%, #e3fafc, #0b7285);
+            min-height: 120px;
+            display: flex;
+            align-items: flex-end;
+            padding: 0.7rem;
+            color: #f8f9fa;
+            font-size: 0.85rem;
+        }
+
+        .media-thumb::before {
+            content: "▶";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .media-thumb span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.6fr) minmax(0, 2fr);
+            gap: 1.75rem;
+        }
+
+        .contact-card {
+            background: #ffffff;
+            border-radius: 0.9rem;
+            padding: 1rem;
+            box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+            font-size: 0.9rem;
+        }
+
+        .contact-field {
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-field strong {
+            display: inline-block;
+            width: 86px;
+        }
+
+        form {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 0.55rem 0.65rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(15, 23, 42, 0.18);
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        footer {
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+            margin-top: 2rem;
+            padding: 1.25rem 1.25rem 2rem;
+            font-size: 0.8rem;
+            color: rgba(15, 23, 42, 0.7);
+        }
+
+        footer .footer-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 880px) {
+            .hero {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .hero-card {
+                order: -1;
+            }
+
+            .grid-3,
+            .media-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .contact-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .nav-links {
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding-bottom: 2.25rem;
+            }
+
+            .grid-3,
+            .media-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .schedule-item {
+                grid-template-columns: minmax(0, 1fr);
+                align-items: flex-start;
+            }
+
+            .schedule-tag {
+                justify-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="nav">
+        <div class="brand">
+            <div class="brand-logo">MB</div>
+            <div>Michigan Badminton Lovers</div>
+        </div>
+        <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#join">Join</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#media">Videos</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Welcome to <span>Michigan Badminton Lovers</span></h1>
+            <p class="hero-tagline">
+                A community for everyone who loves badminton in Michigan – from casual players
+                to competitive athletes and fans of our sports channel.
+            </p>
+            <div class="hero-cta">
+                <a href="#join" class="btn btn-primary">Join the Community</a>
+                <!-- Replace # below with your actual YouTube / streaming link -->
+                <a href="#" class="btn btn-outline">Watch Our Latest Match</a>
+            </div>
+            <div class="hero-meta">
+                <span>🏸 Weekly meetups</span>
+                <span>📺 Match highlights &amp; tutorials</span>
+                <span>📍 Michigan-based players &amp; fans</span>
+            </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Next session highlight">
+            <div class="hero-card-header">
+                <div>
+                    <div class="badge">Next meetup</div>
+                    <h2>Drop-in Doubles Night</h2>
+                </div>
+                <div style="text-align:right;font-size:0.78rem;opacity:0.7;">
+                    Recreational &amp; Competitive
+                </div>
+            </div>
+            <p>
+                Friendly games, drills, and filming for the Michigan Badminton Lovers channel.
+                All levels welcome – just bring your racket and a smile.
+            </p>
+            <div class="hero-meta-small">
+                <div class="hero-meta-item">
+                    <div class="hero-meta-label">Date</div>
+                    <div class="hero-meta-value">Fridays</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="hero-meta-label">Time</div>
+                    <div class="hero-meta-value">7:00 – 9:30 PM</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="hero-meta-label">Location</div>
+                    <div class="hero-meta-value">Metro Detroit Gym*</div>
+                </div>
+            </div>
+            <p style="font-size:0.75rem;margin-top:0.5rem;opacity:0.7;">
+                *Update this with your real venue name &amp; address.
+            </p>
+        </aside>
+    </div>
+</header>
+
+<main>
+    <!-- About -->
+    <section id="about">
+        <div class="section-header">
+            <div>
+                <div class="pill">🏸 About us</div>
+                <h2>Badminton, community, and live sports content</h2>
+            </div>
+            <p>
+                Michigan Badminton Lovers is a community-driven sports channel and club.
+                We organize local games, film highlights, share tips for all skill levels,
+                and help more people discover how fun badminton can be.
+            </p>
+        </div>
+
+        <div class="grid-3">
+            <article class="card">
+                <div class="label">For players</div>
+                <h3>Play more, level up faster</h3>
+                <p>
+                    Join regular meetups, friendly matches, and practice sessions.
+                    Learn from other players, try new drills, and track your progress.
+                </p>
+            </article>
+            <article class="card">
+                <div class="label">For fans</div>
+                <h3>Local badminton, on screen</h3>
+                <p>
+                    Enjoy match highlights, player spotlights, and behind-the-scenes clips
+                    from gyms and tournaments across Michigan.
+                </p>
+            </article>
+            <article class="card">
+                <div class="label">For beginners</div>
+                <h3>Start where you are</h3>
+                <p>
+                    Never played before? No problem. We share simple tutorials and beginner-friendly
+                    sessions, so you can learn at your own pace.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Join -->
+    <section id="join">
+        <div class="section-header">
+            <div>
+                <div class="pill">🤝 Join us</div>
+                <h2>How to become a Michigan Badminton Lover</h2>
+            </div>
+            <p>
+                Joining is free. Just follow the steps below and show up ready to play
+                or support from the sidelines.
+            </p>
+        </div>
+
+        <div class="grid-3">
+            <article class="card">
+                <h3>1. Follow our channel</h3>
+                <p>
+                    Subscribe to our sports channel so you never miss new matches, coaching
+                    tips, or event announcements.
+                </p>
+                <!-- Replace # with your YouTube / Twitch / Facebook link -->
+                <p style="margin-top:0.4rem;font-size:0.85rem;">
+                    Channel link: <a href="#" style="color:var(--primary-dark);text-decoration:underline;">Add your channel URL here</a>
+                </p>
+            </article>
+            <article class="card">
+                <h3>2. Join the group chat</h3>
+                <p>
+                    We coordinate weekly games and carpools in our group chat.
+                    Add your preferred app link (WhatsApp, Discord, etc.) here.
+                </p>
+                <p style="margin-top:0.4rem;font-size:0.85rem;">
+                    Group link: <em>Coming soon</em>
+                </p>
+            </article>
+            <article class="card">
+                <h3>3. Show up &amp; play</h3>
+                <p>
+                    Check the schedule below, bring your gear, and meet other badminton fans.
+                    We’ll handle courts, shuttles, and filming.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Schedule -->
+    <section id="schedule">
+        <div class="section-header">
+            <div>
+                <div class="pill">📅 Schedule</div>
+                <h2>Upcoming sessions &amp; recordings</h2>
+            </div>
+            <p>
+                Update these details each week so players know when and where to meet,
+                and which events will be recorded for the channel.
+            </p>
+        </div>
+
+        <div class="schedule-list">
+            <div class="schedule-item">
+                <div>
+                    <div class="schedule-date">Friday Night Drop-In</div>
+                    <div class="schedule-venue">Metro Detroit Gym – Court 3–4</div>
+                </div>
+                <div>
+                    7:00 – 9:30 PM
+                </div>
+                <div class="schedule-tag">Recording for channel</div>
+            </div>
+            <div class="schedule-item">
+                <div>
+                    <div class="schedule-date">Sunday Skills &amp; Drills</div>
+                    <div class="schedule-venue">Ann Arbor Area – Community Center</div>
+                </div>
+                <div>
+                    4:00 – 6:00 PM
+                </div>
+                <div class="schedule-tag">Coaching focus</div>
+            </div>
+            <div class="schedule-item">
+                <div>
+                    <div class="schedule-date">Monthly Mini-Tournament</div>
+                    <div class="schedule-venue">Rotating Michigan locations</div>
+                </div>
+                <div>
+                    See date
+                </div>
+                <div class="schedule-tag">Featured on channel</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media -->
+    <section id="media">
+        <div class="section-header">
+            <div>
+                <div class="pill">📺 Watch</div>
+                <h2>Latest videos &amp; highlights</h2>
+            </div>
+            <p>
+                Replace these cards with thumbnail images and links to your real videos,
+                playlists, or live streams.
+            </p>
+        </div>
+
+        <div class="media-grid">
+            <a class="media-thumb" href="#">
+                <!-- Replace # with video URL -->
+                <span>City League Doubles Finals – Michigan Badminton Lovers</span>
+            </a>
+            <a class="media-thumb" href="#">
+                <span>Beginner Footwork Drills – Start Playing in 30 Minutes</span>
+            </a>
+            <a class="media-thumb" href="#">
+                <span>Top 10 Rallies From Last Month’s Meetups</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="section-header">
+            <div>
+                <div class="pill">📨 Contact</div>
+                <h2>Contact Michigan Badminton Lovers</h2>
+            </div>
+            <p>
+                Use this section so people can reach out for collaborations, sponsorships,
+                or to host events at their local gym.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="label">Details</div>
+                <div class="contact-field">
+                    <strong>Email</strong>
+                    <!-- Replace with your real email -->
+                    <a href="mailto:info@michiganbadmintonlovers.com">info@michiganbadmintonlovers.com</a>
+                </div>
+                <div class="contact-field">
+                    <strong>Instagram</strong>
+                    <a href="#">@michigan_badminton_lovers</a>
+                </div>
+                <div class="contact-field">
+                    <strong>YouTube</strong>
+                    <a href="#">Add channel link here</a>
+                </div>
+                <div class="contact-field">
+                    <strong>Location</strong>
+                    Michigan, USA
+                </div>
+                <p style="font-size:0.82rem;opacity:0.8;margin-top:0.75rem;">
+                    Tip: customize these links, then publish this page using a free host
+                    (GitHub Pages, Netlify, Vercel, etc.).
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="label">Quick message form</div>
+                <!-- This is a static form (no backend). Connect it to a service like Formspree or Netlify Forms. -->
+                <form>
+                    <div>
+                        <label for="name">Name</label>
+                        <input id="name" type="text" name="name" placeholder="Your name" />
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email" placeholder="you@example.com" />
+                    </div>
+                    <div>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us how you’d like to get involved..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top:0.25rem;">
+                        Send (connect to a form service)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div>© <span id="year"></span> Michigan Badminton Lovers. All rights reserved.</div>
+        <div>Made with ❤️ by the Michigan badminton community.</div>
+    </div>
+</footer>
+
+<script>
+    // Set current year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
